@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Products | Hearth & Batter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="Assets/CSS/Style.css" />
+
+</head>
+<body>
+  <!-- CART TOGGLE & SIDEBAR -->
+  <div id="cart-sidebar">
+    <h2>Your Cart (<span id="cart-count">0</span>)</h2>
+    <div id="cart-items"></div>
+    <p>Total: ₹<span id="cart-total">0.00</span></p>
+    <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    <button class="close-btn" onclick="toggleCart()">Close</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">Hearth & Batter</div>
+      <div class="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="flip-link">Home</a>
+        <a href="products.html" class="flip-link">Products</a>
+        <a href="story.html" class="flip-link">Our Story</a>        
+      </div>
+      <button id="cart-toggle" onclick="toggleCart()">
+        🛒
+        <span id="cart-count-bubble" class="cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+  
+  <div id="products"></div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1>Our Complete Product Range</h1>
+    <p>Discover our full selection of homemade treats, crafted with all-natural ingredients and baked with love</p>
+  </header>
+
+    <!-- Dynamic Product Grid -->
+    <div id="product-grid" class="product-grid"></div>
+
+  <!-- Search Filter -->
+  <div class="search-filter-container">
+    <div class="search-box">
+      <input type="text" id="productSearch" placeholder="Search products...">
+    </div>
+    <div class="filter-options">
+      <label>Filter by:</label>
+      <button class="filter-btn" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="sugar-free">Sugar-Free</button>
+      <button class="filter-btn" data-filter="premix">Premix</button>
+      <button class="filter-btn" data-filter="baked">Ready to Eat</button>
+    </div>
+  </div>
+
+  <!-- CATEGORY NAV -->
+  <nav class="category-nav">
+    <ul class="category-list">
+      <li class="category-item"><a href="#cookies" class="category-link">Cookies</a></li>
+      <li class="category-item"><a href="#brownies" class="category-link">Brownies</a></li>
+      <li class="category-item"><a href="#cakes" class="category-link">Cakes</a></li>
+      <li class="category-item"><a href="#chocolates" class="category-link">Chocolates</a></li>
+      <li class="category-item"><a href="#healthier-options" class="category-link">Healthier Options</a></li>
+      <li class="category-item"><a href="#gift-boxes" class="category-link">Gift Boxes</a></li>
+    </ul>
+  </nav>
+
+  <!-- PRODUCTS CONTAINER -->
+  <div class="products-container">
+    
+    <!-- COOKIES SECTION -->
+    <section class="category-section" id="cookies">
+      <h2 class="category-title">Cookies</h2>
+      <div class="product-grid">
+        <!-- Classic Chocolate Chip -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Classic Chocolate Chip Cookies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Classic Chocolate Chip</h2>
+            <p>Our signature cookie with Belgian chocolate chunks and a hint of sea salt.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹250<br>Baked (250g): ₹400</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('classic-choc-chip', 'Classic Chocolate Chip', 250, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('classic-choc-chip', 'Classic Chocolate Chip', 400, 'Baked')">Order Baked</a>          </div>
+        </div>
+
+        <!-- Double Chocolate -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Double Chocolate Cookies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Double Chocolate</h2>
+            <p>Rich cocoa cookies loaded with white and dark chocolate chunks.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹250<br>Baked (250g): ₹400</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('double-choc', 'Double Chocolate', 250, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('double-choc', 'Double Chocolate', 400, 'Baked')">Order Baked</a>
+            </div>
+        </div>
+
+        <!-- Oatmeal Raisin -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Oatmeal Raisin Cookies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Oatmeal Raisin</h2>
+            <p>Hearty oatmeal cookies with plump raisins and a hint of cinnamon.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹250<br>Baked (250g): ₹400</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('oatmeal-raisin', 'Oatmeal Raisin', 250, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('oatmeal-raisin', 'Oatmeal Raisin', 400, 'Baked')">Order Baked</a>          </div>
+        </div>
+
+        <!-- Sugar-Free Cookies -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Sugar-Free Cookies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Sugar-Free Cookies</h2>
+            <p>Naturally sweetened with dates and stevia. Available in multiple flavors.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹300<br>Baked (250g): ₹450</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('sugar-free-cookies', 'Sugar-Free Cookies', 300, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('sugar-free-cookies', 'Sugar-Free Cookies', 450, 'Baked')">Order Baked</a>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BROWNIES SECTION -->
+    <section class="category-section" id="brownies">
+      <h2 class="category-title">Brownies</h2>
+      <div class="product-grid">
+        <!-- Classic Fudge Brownies -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Classic Fudge Brownies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Classic Fudge</h2>
+            <p>Rich, fudgy brownies made with premium cocoa. Dense and chewy texture.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹250<br>Baked (250g): ₹350</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('classic-fudge', 'Classic Fudge', 250, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('classic-fudge', 'Classic Fudge', 350, 'Baked')">Order Baked</a>                 
+            </div>
+        </div>
+
+        <!-- Walnut Brownies -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Walnut Brownies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Walnut Brownies</h2>
+            <p>Our classic brownies loaded with crunchy walnuts for added texture.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹300<br>Baked (250g): ₹400</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('walnut-brownies', 'Walnut Brownies', 300, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('walnut-brownies', 'Walnut Brownies', 400, 'Baked')">Order Baked</a>
+            </div>
+        </div>
+
+        <!-- Caramel Swirl Brownies -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Caramel Swirl Brownies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Caramel Swirl</h2>
+            <p>Chocolate brownies with a homemade caramel swirl throughout.</p>
+            <div class="product-price">
+              <p>Baked (250g): ₹450</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('caramel-swirl', 'Caramel Swirl', 450, 'Baked')">Order Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAKES SECTION -->
+    <section class="category-section" id="cakes">
+      <h2 class="category-title">Cakes</h2>
+      <div class="product-grid">
+        <!-- Vanilla Cake -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Vanilla Cake" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Vanilla</h2>
+            <p>Light and fluffy vanilla cake with a hint of real Madagascar vanilla.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹250<br>Baked (250g): ₹400</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('vanilla-cake', 'Vanilla Cake', 250, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('vanilla-cake', 'Vanilla Cake', 400, 'Baked')">Order Baked</a>
+            </div>
+        </div>
+
+        <!-- Chocolate Cake -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Chocolate Cake" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Chocolate</h2>
+            <p>Rich chocolate cake made with premium cocoa for a deep flavor.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹250<br>Baked (250g): ₹400</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('chocolate-cake', 'Chocolate Cake', 250, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('chocolate-cake', 'Chocolate Cake', 400, 'Baked')">Order Baked</a>
+            </div>
+        </div>
+
+        <!-- Red Velvet Cake -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Red Velvet Cake" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Red Velvet</h2>
+            <p>Classic red velvet cake with a subtle cocoa flavor. Naturally colored.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹300<br>Baked (250g): ₹450</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('red-velvet', 'Red Velvet Cake', 300, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('red-velvet', 'Red Velvet Cake', 450, 'Baked')">Order Baked</a>
+            </div>
+        </div>
+
+        <!-- Spice Cake -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Spice Cake" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Spice Cake</h2>
+            <p>Warm spices like cinnamon, nutmeg, and cloves in a moist cake.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹250<br>Baked (250g): ₹400</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('spice-cake', 'Spice Cake', 250, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('spice-cake', 'Spice Cake', 400, 'Baked')">Order Baked</a>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHOCOLATES SECTION -->
+    <section class="category-section" id="chocolates">
+      <h2 class="category-title">Chocolates</h2>
+      <div class="product-grid">
+        <!-- Dark Chocolate Truffles -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Dark Chocolate Truffles" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Dark Chocolate Truffles</h2>
+            <p>Smooth dark chocolate ganache truffles dusted with cocoa powder.</p>
+            <div class="product-price">
+              <p>250g: ₹500<br>1kg: ₹800</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('dark-truffles', 'Dark Chocolate Truffles', 500, '250g')">Order 250g</a>
+            <a href="#" class="btn" onclick="addToCart('dark-truffles', 'Dark Chocolate Truffles', 800, '1kg')">Order 1kg</a>
+            </div>
+        </div>
+
+        <!-- Assorted Chocolates -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Assorted Chocolates" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Assorted Chocolates</h2>
+            <p>A mix of milk, dark, and white chocolates with various fillings.</p>
+            <div class="product-price">
+              <p>500g: ₹650<br>1kg: ₹1200</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('assorted-choc', 'Assorted Chocolates', 650, '500g')">Order 500g</a>
+            <a href="#" class="btn" onclick="addToCart('assorted-choc', 'Assorted Chocolates', 1200, '1kg')">Order 1kg</a>         
+           </div>
+        </div>
+
+        <!-- Gift Boxes -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Chocolate Gift Boxes" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Gift Boxes</h2>
+            <p>Elegantly packaged chocolates perfect for gifting on special occasions.</p>
+            <div class="product-price">
+              <p>Small (12 pcs): ₹600<br>Large (24 pcs): ₹1100</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('gift-box', ' Gift Box', 600, 'Small')">Order Small</a>
+            <a href="#" class="btn" onclick="addToCart('gift-box', ' Gift Box', 1100, 'Large')">Order Large</a>          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEALTHIER OPTIONS SECTION -->
+    <section class="category-section" id="healthier-options">
+      <h2 class="category-title">Healthier Options</h2>
+      <div class="product-grid">
+        <!-- Millet Cookies - Buckwheat -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Buckwheat Millet Cookies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Buckwheat Millet Cookies</h2>
+            <p>Nutrient-rich cookies made with organic buckwheat flour.</p>
+            <div class="product-price">
+              <p>250g: ₹500</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('buckwheat-cookies', 'Buckwheat Millet Cookies', 500, '250g')">Order Now</a>
+          </div>
+        </div>
+
+        <!-- Millet Cookies - Quinoa Walnut -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Quinoa Walnut Millet Cookies" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Quinoa Walnut Cookies</h2>
+            <p>Protein-packed cookies with quinoa flour and crunchy walnuts.</p>
+            <div class="product-price">
+              <p>250g: ₹500</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('quinoa-walnut', 'Quinoa Walnut Cookies', 500, '250g')">Order Now</a>
+          </div>
+        </div>
+
+        <!-- Seeds & Nut Bar - Classic -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Classic Seeds & Nut Bar" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Classic Seeds & Nut Bar</h2>
+            <p>Energy-dense bars with almonds, walnuts, pumpkin seeds, and honey.</p>
+            <div class="product-price">
+              <p>Pack of 5: ₹450</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('nut-bar-classic', 'Classic Seeds & Nut Bar', 450, 'Pack of 5')">Order Now</a>
+          </div>
+        </div>
+
+        <!-- Seeds & Nut Bar - Chocolate -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Chocolate Seeds & Nut Bar" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Chocolate Seeds & Nut Bar</h2>
+            <p>Our classic nut bar dipped in dark chocolate for an indulgent treat.</p>
+            <div class="product-price">
+              <p>Pack of 5: ₹500</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('nut-bar-choc', 'Chocolate Seeds & Nut Bar', 500, 'Pack of 5')">Order Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GIFT BOXES SECTION -->
+    <section class="category-section" id="gift-boxes">
+      <h2 class="category-title">Gift Boxes</h2>
+      <div class="product-grid">
+        <!-- Assorted Cookie Box -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Assorted Cookie Box" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Assorted Cookie Box</h2>
+            <p>A selection of our best-selling cookies in an elegant gift box.</p>
+            <div class="product-price">
+              <p>Small (12 pcs): ₹600<br>Large (24 pcs): ₹1100</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('cookie-box', 'Assorted Cookie Box', 600, 'Small')">Order Small</a>
+            <a href="#" class="btn" onclick="addToCart('cookie-box', 'Assorted Cookie Box', 1100, 'Large')">Order Large</a>
+            </div>
+        </div>
+
+        <!-- Celebration Box -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Celebration Box" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Celebration Box</h2>
+            <p>Mix of cookies, brownies, and chocolates for special occasions.</p>
+            <div class="product-price">
+              <p>Small: ₹800<br>Large: ₹1500</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('celebration', 'Celebration Box', 800, 'Small')">Order Small</a>
+            <a href="#" class="btn" onclick="addToCart('celebration', 'Celebration Box', 1500, 'Large')">Order Large</a>
+            </div>
+        </div>
+
+        <!-- Corporate Gift Box -->
+        <div class="product">
+          <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Corporate Gift Box" class="product-img" loading="lazy">
+          <div class="product-info">
+            <h2>Corporate Gift Box</h2>
+            <p>Customizable gift boxes perfect for client appreciation and events.</p>
+            <div class="product-price">
+              <p>Starting at: ₹1000<br>Custom branding available</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('corporate-gift', 'Corporate Gift Box', 1000, 'Standard')">Order Now</a>
+          </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+ <footer>
+    <div class="footer-icon animate__animated animate__fadeInUp">
+      <a href="https://wa.me/919799959412" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/logo's/WhatsApp-Logo.svg" alt="WhatsApp" class="footer-icon" /></a>
+      <a href="https://www.instagram.com/hearthandbatter" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/logo's/Instagram-Logo.svg" alt="Instagram" class="footer-icon" /></a>
+      <a href="mailto:info@hearthandbatter.com">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/logo's/Gmail-logo.svg" alt="Gmail" class="footer-icon" />
+      </a>
+    </div>
+
+    <p class="footer-contact">CONTACT US</p>
+    <p class="copyright">© 2025 Hearth & Batter. All rights reserved.</p>
+  </footer>
+
+     <!-- JavaScript Tags -->
+     <script src="Assets/JavaScripts/cart-and-product-logic.js"></script>
+     <script src="Assets/JavaScripts/google-sheets-integration.js"></script>
+      
+</body>
+</html>

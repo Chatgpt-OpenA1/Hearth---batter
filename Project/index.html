@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Hearth & Batter - Artisanal homemade cookies, brownies, and baked goods crafted with natural ingredients">
+  <meta name="keywords" content="bakery, cookies, brownies, homemade, artisanal, natural ingredients">
+  <title>Hearth & Batter | Home-Baked Goods</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="Assets/CSS/Style.css" />
+</head>
+<body>
+
+  <!-- CART TOGGLE & SIDEBAR -->
+  <div id="cart-sidebar">
+    <h2>Your Cart (<span id="cart-count">0</span>)</h2>
+    <div id="cart-items"></div>
+    <p>Total: ₹<span id="cart-total">0.00</span></p>
+    <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    <button class="close-btn" onclick="toggleCart()">Close</button>
+  </div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">Hearth & Batter</div>
+      <div class="mobile-menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="flip-link">Home</a>
+        <a href="products.html" class="flip-link">Products</a>
+        <a href="story.html" class="flip-link">Our Story</a>
+      </div>
+      <button id="cart-toggle" onclick="toggleCart()">
+        🛒
+        <span id="cart-count-bubble" class="cart-count">0</span>
+      </button>
+    </div>
+  </nav>  
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        preload="metadata"
+        id="bg-video">
+        <source src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/Videos/Cookies_Background_Video.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1 class="animate__animated animate__flipInX">Hearth & Batter</h1>
+        <p class="animate__animated animate__fadeIn animate__delay-1s">Delicious homemade cookies, brownies, and more—crafted with all-natural ingredients and baked with love.</p>
+        <a href="#products" class="btn animate__animated animate__fadeIn animate__delay-1s">Explore Our Products</a>
+    </div>
+</section>
+
+  <!-- FEATURED PRODUCTS SECTION -->
+  <section class="home-products" id="products">
+    <h2 class="section-title">Our Featured Products</h2>
+    <div class="home-product-grid">
+
+      <!-- Brownies -->
+      <div class="home-product">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Brownies" class="product-img" loading="lazy">
+        <div class="product-info">
+          <h2>Classic Fudge</h2>
+          <p>Rich, fudgy brownies made with premium cocoa. Dense and chewy texture.</p>
+          <div class="product-price">
+              <p>Premix (250g): ₹250<br>Baked (250g): ₹350</p>
+          </div>
+          <a href="#" class="btn" onclick="addToCart('classic-fudge', 'Classic Fudge', 250, 'Premix')">Order Premix</a>
+          <a href="#" class="btn" onclick="addToCart('classic-fudge-baked', 'Classic Fudge', 350, 'Baked')">Order Baked</a>
+      </div>
+  </div>
+
+      <!-- Cookies -->
+      <div class="home-product">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png"
+             alt="Cookies" class="product-img" loading="lazy">
+        <div class="product-info">
+          <h2>Sugar-Free Cookies</h2>
+            <p>Naturally sweetened with dates and stevia. Available in multiple flavors.</p>
+            <div class="product-price">
+              <p>Premix (250g): ₹300<br>Baked (250g): ₹450</p>
+            </div>
+            <a href="#" class="btn" onclick="addToCart('sugar-free-cookies', 'Sugar-Free Cookies', 300, 'Premix')">Order Premix</a>
+            <a href="#" class="btn" onclick="addToCart('sugar-free-cookies-baked', 'Sugar-Free Cookies', 450, 'Baked')">Order Baked</a>
+            </div>
+      </div>
+
+      <!-- Chocolates -->
+      <div class="home-product">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Assorted Chocolates" class="product-img" loading="lazy">
+        <div class="product-info">
+          <h2>Assorted Chocolates</h2>
+          <p>A mix of milk, dark, and white chocolates with various fillings.</p>
+          <div class="product-price">
+            <p>500g: ₹650<br>1kg: ₹1200</p>
+          </div>
+          <a href="#" class="btn" onclick="addToCart('assorted-choc-small', 'Assorted Chocolates', 650, '500g')">Order 500g</a>
+          <a href="#" class="btn" onclick="addToCart('assorted-choc-large', 'Assorted Chocolates', 1200, '1kg')">Order 1kg</a>         
+         </div>
+      </div>
+
+      <!-- Cakes -->
+      <div class="home-product">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Chocolate Cake" class="product-img" loading="lazy">
+        <div class="product-info">
+          <h2>Chocolate</h2>
+          <p>Rich chocolate cake made with premium cocoa for a deep flavor.</p>
+          <div class="product-price">
+            <p>Premix (250g): ₹250<br>Baked (250g): ₹400</p>
+          </div>
+          <a href="#" class="btn" onclick="addToCart('chocolate-cake', 'Chocolate Cake', 250, 'Premix')">Order Premix</a>
+          <a href="#" class="btn" onclick="addToCart('chocolate-cake-baked', 'Chocolate Cake', 400, 'Baked')">Order Baked</a>
+          </div>
+      </div>
+
+      <!-- Seeds & Nut Bars -->
+      <div class="home-product">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Hearth-and-Batter.png" alt="Chocolate Seeds & Nut Bar" class="product-img" loading="lazy">
+        <div class="product-info">
+          <h2>Chocolate Seeds & Nut Bar</h2>
+          <p>Our classic nut bar dipped in dark chocolate for an indulgent treat.</p>
+          <div class="product-price">
+            <p>Pack of 5: ₹500</p>
+          </div>
+          <a href="#" class="btn" onclick="addToCart('nut-bar-choc', 'Chocolate Seeds & Nut Bar', 500, 'Pack of 5')">Order Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY SECTION -->
+  <section class="about" id="our-story">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>Our Story</h2>
+        <p>Hearth & Batter was born from a passion for creating delicious treats using only the finest natural ingredients. What started as weekend baking for family and friends quickly grew into something more as word spread about our delectable creations.</p>
+        <p>Every product is carefully crafted in small batches to ensure quality and freshness. We never use artificial preservatives, flavors, or colors in our baked goods. Our mission is simple: to bring joy through honest, homemade treats that remind you of the comfort of home.</p>
+        <p>Whether you're an experienced baker using our premixes or enjoying our ready-to-eat products, we promise an experience that's both delicious and wholesome.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/images/Smoking Hearth & Batter.png" alt="Baking Process" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p>Have questions about our products or want to place a custom order? We'd love to hear from you!</p>
+        <p><i class="fas fa-map-marker-alt"></i> Location: Ludhiana, Punjab</p>
+        <p><i class="fas fa-phone"></i> Phone: +91 9799959412</p>
+        <p><i class="fas fa-envelope"></i> Email: info@hearthandbatter.com</p>
+        <p>We accept orders via WhatsApp, email, or phone. Custom orders require 48 hours notice.</p>
+      </div>
+      <div class="contact-form">
+        <form action="#" method="POST">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Your Name" required aria-label="Your Name">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" class="form-control" placeholder="Your Phone">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" placeholder="Your Message" required aria-label="Your Message" ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-icon animate__animated animate__fadeInUp">
+      <a href="https://wa.me/919799959412" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/logo's/WhatsApp-Logo.svg" alt="WhatsApp" class="footer-icon" /></a>
+      <a href="https://www.instagram.com/hearthandbatter" target="_blank" rel="noopener">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/logo's/Instagram-Logo.svg" alt="Instagram" class="footer-icon" /></a>
+      <a href="mailto:info@hearthandbatter.com">
+        <img src="https://raw.githubusercontent.com/Sudo-gaurav/Hearth-And-Batter-Website/main/Assets/logo's/Gmail-logo.svg" alt="Gmail" class="footer-icon" />
+      </a>
+    </div>
+
+    <p class="footer-contact">CONTACT US</p>
+    <p class="copyright">© 2025 Hearth & Batter. All rights reserved.</p>
+  </footer>
+
+
+    <!-- JavaScript for Cart Functionality -->
+<script>
+  const contactForm = document.querySelector('.contact-form form');
+  
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const nameField = this.querySelector('input[type="text"]');
+    const emailField = this.querySelector('input[type="email"]');
+    const messageField = this.querySelector('textarea');
+    let isValid = true;
+    
+    if (nameField.value.trim() === '') {
+      showError(nameField, 'Name is required');
+      isValid = false;
+    } else {
+      removeError(nameField);
+    }
+    
+    if (emailField.value.trim() === '') {
+      showError(emailField, 'Email is required');
+      isValid = false;
+    } else if (!isValidEmail(emailField.value)) {
+      showError(emailField, 'Please enter a valid email');
+      isValid = false;
+    } else {
+      removeError(emailField);
+    }
+    
+    if (messageField.value.trim() === '') {
+      showError(messageField, 'Message is required');
+      isValid = false;
+    } else {
+      removeError(messageField);
+    }
+    
+    if (isValid) {
+      const successMsg = document.createElement('div');
+      successMsg.className = 'success-message';
+      successMsg.innerHTML = 'Thank you! Your message has been sent.';
+      successMsg.style.color = '#4caf50';
+      successMsg.style.backgroundColor = 'rgba(76, 175, 80, 0.1)';
+      successMsg.style.padding = '10px';
+      successMsg.style.borderRadius = '5px';
+      successMsg.style.marginTop = '20px';
+      
+      contactForm.appendChild(successMsg);
+      contactForm.reset();
+      
+      setTimeout(() => {
+        successMsg.remove();
+      }, 5000);
+      }
+  });
+  
+  function showError(input, message) {
+    const formGroup = input.parentElement;
+    let errorMessage = formGroup.querySelector('.error-message');
+    
+    if (!errorMessage) {
+      errorMessage = document.createElement('div');
+      errorMessage.className = 'error-message';
+      errorMessage.style.color = '#f44336';
+      errorMessage.style.fontSize = '0.8rem';
+      errorMessage.style.marginTop = '5px';
+      formGroup.appendChild(errorMessage);
+    }
+    
+    errorMessage.textContent = message;
+    input.style.borderColor = '#f44336';
+  }
+  
+  function removeError(input) {
+    const formGroup = input.parentElement;
+    const errorMessage = formGroup.querySelector('.error-message');
+    
+    if (errorMessage) {
+      errorMessage.remove();
+    }
+    
+    input.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+  }
+  
+  function isValidEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+</script>
+
+     <!-- JavaScript Tags -->
+     <script src="Assets/JavaScripts/cart-and-product-logic.js"></script>
+     <script src="Assets/JavaScripts/google-sheets-integration.js"></script>
+
+</body>
+</html>
+``` 
